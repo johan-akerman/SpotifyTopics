@@ -1,0 +1,275 @@
+.header {
+  text-align: center;
+}
+body {
+  background-color: #0f0f0f !important;
+  color: white !important;
+  text-align: center !important;
+}
+
+.myNavbar {
+  background-color: #000;
+  padding-left: 0 !important;
+  padding-top: 16px !important;
+  padding-bottom: 16px !important;
+  height: 10vh;
+}
+
+.navbarBrand {
+  margin-left: 32px;
+}
+.myContainer {
+  padding-top: 15vh;
+}
+
+.episodeDescriptionContainer {
+  padding-top: 32px !important;
+  text-align: left;
+}
+
+.backBtn {
+  color: white;
+  height: 25px;
+  width: 55px !important;
+  font-size: 13px;
+
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  line-height: 16px;
+  text-decoration: none;
+}
+
+.backBtn:hover {
+  color: #1db954;
+  text-decoration: none;
+}
+
+.episode-thumbnail {
+  width: 100%;
+  margin-right: 24px;
+  border-radius: 11px;
+}
+
+.episodeHeaderRow {
+  padding-top: 114px !important;
+}
+
+.episodeHeader {
+  position: relative !important;
+  height: auto;
+}
+
+.episodeFragment {
+  position: absolute !important;
+  bottom: 0;
+}
+.episodeType {
+  text-align: left;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  line-height: 16px;
+  text-transform: uppercase;
+  vertical-align: baseline;
+}
+
+.episodeTitle {
+  text-align: left;
+  color: #fff;
+  font-size: 48px;
+  font-weight: 900;
+  line-height: 48px;
+  letter-spacing: -1.92px;
+  padding-bottom: 3.85px;
+  padding-top: 3.85px;
+  word-break: break-word;
+}
+
+.episodePublisher {
+  text-align: left;
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 0.21px;
+  line-height: 28px;
+}
+
+.episodePlayer {
+  padding-top: 16px;
+  margin: 0;
+  height: 50px;
+}
+
+.episodeDescriptionContainer {
+  max-height: 90vh !important;
+  overflow: auto;
+}
+
+.episodeDescriptionInnerContainer {
+  padding-left: 32px;
+  padding-right: 32px;
+}
+.episodeTopicsContainer {
+  background-color: #272727;
+  height: 90vh;
+  overflow: auto;
+  padding-left: 0 !important;
+}
+
+.list-group-item {
+  text-align: left !important;
+  background-color: transparent !important;
+  border-bottom: 1px solid #333 !important;
+}
+
+.listGroupItemTitle {
+  text-align: left;
+  font-size: 16px;
+  letter-spacing: 1.2px;
+  line-height: 16px;
+  vertical-align: baseline;
+}
+
+.listGroupItemTime {
+  text-align: left;
+
+  font-size: 12px;
+  font-weight: 700;
+  padding-top: 8px;
+  letter-spacing: 1.2px;
+  line-height: 16px;
+  vertical-align: baseline;
+}
+
+audio {
+  color: transparent !important;
+  width: 90%;
+}
+
+.activeListGroup {
+  color: #1db954;
+}
+
+.list-group-item span {
+  float: left;
+  clear: left;
+}
+
+.list-group-item:hover {
+  background-color: #333 !important;
+  cursor: pointer;
+}
+
+.listGroupItemHeader {
+  text-align: left;
+  line-height: 40px;
+  font-size: 24px;
+  font-weight: 700;
+
+  height: 64px;
+}
+
+.listGroupItemHeader:hover {
+  background-color: transparent !important;
+  cursor: auto;
+}
+
+.episodeDescriptionTitle {
+  padding-top: 16px;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.96px;
+  line-height: 28px;
+  margin: 0;
+}
+
+.episodeDescriptionText {
+  margin: 0;
+  padding-top: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.24px;
+  line-height: 20px;
+  max-width: 90%;
+}
+
+.myFooter {
+  height: 100px;
+  background-color: #282828;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.myTable > thead {
+  border-top: 2px solid #191414 !important;
+  border-bottom: 3px solid #282828 !important;
+}
+
+.myTable > tbody > tr > td {
+  border-top: 1.5px solid #282828 !important;
+}
+
+.myTable > tbody > tr:hover > td {
+  background-color: #282828 !important;
+}
+
+.myTable > tbody {
+  border-top: 3px solid #191414 !important;
+}
+
+.tableContainer {
+  margin-top: 75px;
+  text-align: left;
+}
+.myTable {
+  color: white !important;
+  text-align: left;
+  overflow-x: hidden !important;
+  border-top: none !important;
+}
+.myContainer h1 {
+  font-size: 46px;
+}
+
+.myContainer p {
+  font-size: 22px;
+}
+
+.myFormContainer {
+  max-width: 500px;
+  margin: 0 auto;
+}
+.myForm {
+  width: 90%;
+  background-color: rgba(143, 146, 161, 0.6) !important;
+  box-shadow: rgba(122, 129, 168, 0.15) 0px 4px 8px !important;
+  color: white !important;
+  border: none !important;
+  height: 60px !important;
+  padding: 16px;
+  line-height: 60px !important;
+}
+
+.myFormButton {
+  background-color: rgba(143, 146, 161, 0.6) !important;
+  border-color: rgba(143, 146, 161, 0.6) !important;
+  border-left: 0.75px solid white !important;
+  height: 60px !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+.myFormButton:hover {
+  background-color: white !important;
+}
+
+::placeholder {
+  color: white !important;
+  opacity: 1; /* Firefox */
+}
