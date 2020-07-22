@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Logo from "../Spotify_Logo.png";
-import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 class Header extends Component {
   render() {
@@ -16,6 +16,7 @@ class Header extends Component {
               alt="React Bootstrap logo"
             />
           </Navbar.Brand>
+          <Link to="/">Logout</Link>
         </Navbar>
       </div>
     );

@@ -46,8 +46,8 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <Header />
         <Router>
+          <Header />
           <div>
             <Switch>
               <Route path="/episodes">

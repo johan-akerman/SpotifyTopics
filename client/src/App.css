@@ -25,6 +25,7 @@ body {
 .episodeDescriptionContainer {
   padding-top: 32px !important;
   text-align: left;
+  overflow-x: hidden;
 }
 
 .backBtn {
@@ -100,7 +101,9 @@ body {
   margin: 0;
   height: 50px;
 }
-
+::-webkit-scrollbar {
+  display: none;
+}
 .episodeDescriptionContainer {
   max-height: 90vh !important;
   overflow: auto;
@@ -115,6 +118,7 @@ body {
   height: 90vh;
   overflow: auto;
   padding-left: 0 !important;
+  overflow-x: hidden;
 }
 
 .list-group-item {
@@ -272,4 +276,94 @@ select:focus {
 ::placeholder {
   color: white !important;
   opacity: 1; /* Firefox */
+}
+
+.episodesContainer {
+  margin: 150px auto 125px auto;
+  max-width: 1100px;
+  text-align: left;
+}
+.episodesContainer h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.podcastEpisodeCard {
+  background-color: rgb(40, 40, 40) !important;
+  text-align: left;
+  padding: 16px 16px 8px 16px;
+  border-radius: 8px;
+  text-decoration: none !important;
+}
+
+.podcastEpisodeCard:hover {
+  transform: scale(1.025);
+}
+
+.podcastEpisodeCard img {
+  margin-bottom: 16px;
+  border-radius: 8px;
+}
+.podcastEpisodeCard h1 {
+  color: #fff;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+  letter-spacing: normal;
+  text-decoration: none !important;
+}
+
+.podcastEpisodeCard h1:hover {
+  text-decoration: none !important;
+}
+.podcastEpisodeCard p:hover {
+  text-decoration: none !important;
+}
+
+.podcastEpisodeCard p {
+  margin-top: 4px;
+  color: #b3b3b3;
+  font-size: 12px;
+  font-weight: 400;
+  text-decoration: none !important;
+}
+
+.podcastEpisodeCard:hover {
+  text-decoration: none !important;
+}
+
+.badgeTopic {
+  padding: 8px 12px !important;
+  margin-right: 14px;
+  margin-top: 14px;
+  background-color: rgb(40, 40, 40) !important;
+  text-align: left !important;
+}
+
+.badgeTopic:hover {
+  transform: scale(1.025);
+  cursor: pointer;
+}
+
+.col-lg-2 {
+  padding: 0 7px !important;
+}
+.badgeTopic h1 {
+  color: #fff;
+  font-size: 16px !important;
+  line-height: 24px !important;
+  font-weight: 700 !important;
+
+  letter-spacing: normal;
+  text-decoration: none !important;
+}
+
+.badgeTopic p {
+  margin-top: 4px;
+  color: #b3b3b3;
+  font-size: 12px;
+  font-weight: 400;
+  text-decoration: none !important;
 }
