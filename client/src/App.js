@@ -1,23 +1,33 @@
 import React, { Component } from "react";
-
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
+import { BrowserRouter, Route, Redirect } from "react-router-dom";
 import "./App.css";
-import Spotify from "spotify-web-api-js";
 import Header from "./components/Header";
-import Episodes from "./components/Episodes";
+import LandingPage from "./components/LandingPage";
+import Discover from "./components/Discover";
 import Episode from "./components/Episode";
-const spotifyWebApi = new Spotify(); //needs to be initialized since it is a class.
+import SpotifyWebApi from "spotify-web-api-js";
+const spotifyApi = new SpotifyWebApi();
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     const params = this.getHashParams();
-    this.state = {};
-
-    if (params.access_token) {
-      spotifyWebApi.setAccessToken(params.access_token);
+    const token = params.access_token;
+    if (token) {
+      spotifyApi.setAccessToken(token);
     }
+    this.state = {
+      loggedIn: token ? true : false,
+      user: "",
+    };
+  }
+
+  componentDidMount() {
+    spotifyApi.getMe().then((response) => {
+      this.setState({
+        user: response,
+      });
+    });
   }
 
   getHashParams() {
@@ -25,48 +35,31 @@ class App extends Component {
     var e,
       r = /([^&;=]+)=?([^&;]*)/g,
       q = window.location.hash.substring(1);
-    while ((e = r.exec(q))) {
+    e = r.exec(q);
+    while (e) {
       hashParams[e[1]] = decodeURIComponent(e[2]);
+      e = r.exec(q);
     }
     return hashParams;
   }
 
-  showSignIn() {
-    if (!this.state.loggedIn) {
-      return (
-        <a href="http://localhost:8888/login">
-          <button>Log in with Spotify</button>
-        </a>
-      );
-    } else {
-      return <div>Logged in</div>;
-    }
-  }
-
   render() {
     return (
-      <React.Fragment>
-        <Router>
-          <Header />
+      <div>
+        <BrowserRouter>
           <div>
-            <Switch>
-              <Route path="/episodes">
-                <Episodes />
-              </Route>
-
-              <Route path="/episode">
-                <Episode />
-              </Route>
-              <Route path="/">
-                {this.showSignIn()}
-
-                <Link to="/episodes">Episodes</Link>
-                <Link to="/episode">Episode</Link>
-              </Route>
-            </Switch>
+            <Header auth={this.state.loggedIn} user={this.state.user} />
+            <Route
+              auth={this.state.loggedIn}
+              path="/"
+              exact
+              component={LandingPage}
+            />
+            <Route path="/discover" component={Discover} />
+            <Route path="/episode" exact component={Episode} />
           </div>
-        </Router>
-      </React.Fragment>
+        </BrowserRouter>
+      </div>
     );
   }
 }
