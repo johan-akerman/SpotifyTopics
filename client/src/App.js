@@ -1,5 +1,10 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch,
+} from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
 import LandingPage from "./components/LandingPage";
@@ -43,23 +48,38 @@ class App extends Component {
     return hashParams;
   }
 
+  checkAuth() {
+    if (!this.state.loggedIn) {
+      return <Redirect to="/login" />;
+    } else {
+      return <Redirect to="/discover" />;
+    }
+  }
+
   render() {
     return (
-      <div>
-        <BrowserRouter>
-          <div>
-            <Header auth={this.state.loggedIn} user={this.state.user} />
+      <Router>
+        <div>
+          <Header auth={this.state.loggedIn} user={this.state.user} />
+          {this.checkAuth()}
+          <Switch>
             <Route
               auth={this.state.loggedIn}
-              path="/"
+              path="/login"
               exact
               component={LandingPage}
             />
-            <Route path="/discover" component={Discover} />
-            <Route path="/episode" exact component={Episode} />
-          </div>
-        </BrowserRouter>
-      </div>
+
+            <Route
+              auth={this.state.loggedIn}
+              path="/discover"
+              exact
+              component={Discover}
+            />
+            <Route path="/discover/:id" exact component={Episode} />
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }

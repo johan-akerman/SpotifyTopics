@@ -26,6 +26,7 @@ body {
   padding-top: 32px !important;
   text-align: left;
   overflow-x: hidden;
+  padding-bottom: 32px;
 }
 
 .backBtn {

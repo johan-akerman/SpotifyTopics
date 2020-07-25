@@ -7,14 +7,6 @@ import Logo from "../Spotify_Logo.png";
 import { Link } from "react-router-dom";
 
 class Header extends Component {
-  checkAuthentication() {
-    if (this.props.auth) {
-      return <div>Log out</div>;
-    } else {
-      return <div>Log in</div>;
-    }
-  }
-
   render() {
     if (!this.props.user.images) {
       return <span></span>;
@@ -23,20 +15,19 @@ class Header extends Component {
     return (
       <div>
         <Navbar className="myNavbar">
-          <Navbar.Brand>
-            <img
-              src={Logo}
-              width="125"
-              className="navbarBrand d-inline-block align-top"
-              alt="React Bootstrap logo"
-            />
-          </Navbar.Brand>
+          <Link to="/discover">
+            <Navbar.Brand>
+              <img
+                src={Logo}
+                width="125"
+                className="navbarBrand d-inline-block align-top"
+                alt="React Bootstrap logo"
+              />
+            </Navbar.Brand>
+          </Link>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Link to="/discover">Discover</Link>
-            </Nav>
+            <Nav className="mr-auto"></Nav>
             <Form inline>
               <div>{this.props.user.display_name}</div>
               <img
@@ -44,7 +35,7 @@ class Header extends Component {
                 src={this.props.user.images[0].url}
               />
 
-              {this.checkAuthentication()}
+              <button>Log out</button>
             </Form>
           </Navbar.Collapse>
         </Navbar>

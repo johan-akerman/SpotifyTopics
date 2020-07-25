@@ -27,8 +27,10 @@ class Episode extends Component {
   }
 
   componentDidMount() {
-    var player = document.getElementById("Player");
-    spotifyWebApi.getEpisode("512ojhOuo1ktJprKbVcKyQ").then((response) => {
+    var episodeId = window.location.href.substring(
+      window.location.href.lastIndexOf("/") + 1
+    );
+    spotifyWebApi.getEpisode(episodeId).then((response) => {
       console.log(response);
       this.setState({
         episode: response,

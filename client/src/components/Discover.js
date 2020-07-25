@@ -1,7 +1,6 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect, useCallback } from "react";
 import "../App.css";
 import { Link } from "react-router-dom";
-import Carousel from "react-bootstrap/Carousel";
 import Spotify from "spotify-web-api-js";
 
 const spotifyWebApi = new Spotify();
@@ -9,19 +8,23 @@ const spotifyWebApi = new Spotify();
 class Discover extends Component {
   constructor(props) {
     super(props);
-    this.state = { episode: "", user: "" };
+    this.state = { episodes: [], user: "" };
   }
 
   componentDidMount() {
-    spotifyWebApi.getEpisode("512ojhOuo1ktJprKbVcKyQ").then((response) => {
-      console.log(response);
-      this.setState({
-        episode: response,
+    spotifyWebApi
+      .getEpisodes([
+        "0QVuQXFPUitPeXH727JLgH",
+        "2QG2XPrjKY6HYSjmxflMzP",
+        "2R4VEgJfLXD2wKmL9c11l6",
+      ])
+      .then((response) => {
+        this.setState({
+          episodes: response.episodes,
+        });
       });
-    });
 
     spotifyWebApi.getMe().then((response) => {
-      console.log(response);
       this.setState({
         user: response,
       });
@@ -33,53 +36,40 @@ class Discover extends Component {
       <div className="episodesContainer">
         <h1>Welcome {this.state.user.display_name},</h1>
         <br />
-        <br />
 
         <h2>Recommended episodes</h2>
+        {console.log(this.state.episodes)}
+
         <div className="row">
-          <div class="col-lg-2">
-            <Link to="/episode">
-              <div class="podcastEpisodeCard">
-                <img
-                  alt="thumbnail"
-                  className="img img-fluid"
-                  src="https://i.scdn.co/image/6bcff849a483dd3c2883b3f0272848b909f1bbce"
-                />
-                <h1>Skitsnack</h1>
-                <p>Anis don Demina</p>
-              </div>
-            </Link>
-          </div>
+          {this.state.episodes &&
+            this.state.episodes.map((episode) => {
+              return (
+                <div className="col-lg-2" key={`episode - ${episode.id}`}>
+                  <Link to={`/discover/${episode.id}`}>
+                    <div className="podcastEpisodeCard">
+                      <img
+                        alt="thumbnail"
+                        className="img img-fluid"
+                        src={episode.images[0].url}
+                      />
+                      <h1>{episode.name}</h1>
+                      <p>{episode.show.name}</p>
+                    </div>
+                  </Link>
+                </div>
+              );
+            })}
         </div>
-        <br />
-        <br />
+
         <br />
 
-        {/* <h2>Trending topics</h2>
+        <h2>Trending topics</h2>
         <a>
-          <span class="badge  badge-secondary badgeTopic">
-            <h1>Introduction to marketing</h1>
-            <p>Anis don Demina</p>
+          <span className="badge  badge-secondary badgeTopic">
+            <h1>Spotify's framtid</h1>
+            <p>Daniel Ek</p>
           </span>
         </a>
-
-        <br />
-        <br />
-        <br />
-
-        <h2>Topics you may find interesting</h2>
-        <a>
-          <span class="badge  badge-secondary badgeTopic">
-            <h1>Introduction to marketing</h1>
-            <p>Anis don Demina</p>
-          </span>
-        </a>
-        <a>
-          <span class="badge  badge-secondary badgeTopic">
-            <h1>Traditional marketing</h1>
-            <p>Anis don Demina</p>
-          </span>
-        </a> */}
       </div>
     );
   }
