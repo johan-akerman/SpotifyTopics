@@ -60,7 +60,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Header auth={this.state.loggedIn} user={this.state.user} />
+          <Header user={this.state.user} />
           {this.checkAuth()}
           <Switch>
             <Route

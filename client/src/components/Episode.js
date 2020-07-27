@@ -1,10 +1,22 @@
 import React, { Component } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
+import ProgressBar from "react-bootstrap/ProgressBar";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 
 import "../App.css";
 import Spotify from "spotify-web-api-js";
 import { Link } from "react-router-dom";
+import { faPlayCircle } from "@fortawesome/free-regular-svg-icons";
+import { faPauseCircle } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const spotifyWebApi = new Spotify();
+
+const topics = [
+  { title: "Intro", start: 0, stop: 7, key: 1 },
+  { title: "Middle", start: 7, stop: 16, key: 2 },
+  { title: "End", start: 16, stop: 30, key: 3 },
+];
 
 class Episode extends Component {
   constructor(props) {
@@ -12,18 +24,10 @@ class Episode extends Component {
     this.state = {
       episode: "",
       show: "",
+      currentTime: 0,
+      playing: false,
+      FontAwesomeIcon: "faPlayCircle",
     };
-  }
-
-  togglePlay() {
-    var player = document.getElementById("Player");
-    return player.paused ? player.play() : player.pause();
-  }
-
-  forwardAudioToTimeStamp(time) {
-    var player = document.getElementById("Player");
-    player.currentTime = time;
-    player.play();
   }
 
   componentDidMount() {
@@ -31,7 +35,6 @@ class Episode extends Component {
       window.location.href.lastIndexOf("/") + 1
     );
     spotifyWebApi.getEpisode(episodeId).then((response) => {
-      console.log(response);
       this.setState({
         episode: response,
         show: response.show,
@@ -39,11 +42,73 @@ class Episode extends Component {
     });
   }
 
-  showTime() {
-    return <div>{this.state.currentTime}</div>;
+  generatePlayButtonContent() {
+    if (this.state.playing) {
+      return [
+        <FontAwesomeIcon icon={faPauseCircle} />,
+        <span className="playBtnText">Paus</span>,
+      ];
+    } else {
+      return [
+        <FontAwesomeIcon icon={faPlayCircle} />,
+        <span className="playBtnText">Play</span>,
+      ];
+    }
+  }
+
+  calculateProcentage(start, stop) {
+    let duration = 30;
+    return ((stop - start) / duration) * 100;
+  }
+
+  updateTime(timestamp) {
+    timestamp = Math.floor(timestamp);
+    this.setState({
+      currentTime: timestamp,
+    });
+  }
+
+  updateTimeline(percent) {
+    let progress = document.querySelector(".timeline-progress");
+    progress.style["width"] = percent;
+  }
+
+  //second version
+  togglePlay() {
+    let status = this.state.playing;
+    let audio = document.getElementById("Player");
+
+    //if not currently playing
+    if (!status) {
+      status = true;
+      audio.play();
+      let that = this;
+
+      setInterval(function () {
+        let currentTime = audio.currentTime;
+        let duration = 30; //all audio-clips are previews of 30s from the podcast.
+        let percent = (currentTime / duration) * 100 + "%";
+        that.updateTimeline(percent);
+        that.updateTime(currentTime);
+      }, 100);
+    } else if (status) {
+      audio.pause();
+      status = false;
+    }
+    this.setState({ playing: status });
+  }
+
+  forwardAudioToTimeStamp(time) {
+    var player = document.getElementById("Player");
+    player.currentTime = time;
+    let percent = (player.currentTime / 30) * 100 + "%";
+    this.updateTimeline(percent);
+    this.updateTime(time);
   }
 
   render() {
+    var player = document.getElementById("Player");
+    console.log(topics);
     if (!this.state.show.images) {
       return <span></span>;
     }
@@ -56,7 +121,7 @@ class Episode extends Component {
               <Link className="backBtn" to="/discover">
                 ← Back to discover
               </Link>
-              {this.showTime()}
+
               <div className="row episodeHeaderRow">
                 <div class="col-lg-3">
                   <img
@@ -75,7 +140,7 @@ class Episode extends Component {
                 </div>
               </div>
 
-              <div className="episodePlayer">
+              <div className="row episodePlayerContainer">
                 <audio id="Player">
                   <source
                     src={this.state.episode.audio_preview_url}
@@ -83,17 +148,44 @@ class Episode extends Component {
                   ></source>
                 </audio>
 
-                <button className="playBtn" onClick={() => this.togglePlay()}>
-                  Play / Pause
-                </button>
-                <button
-                  className="openInSpotifyBtn"
-                  onClick={() =>
-                    (window.location.href = this.state.episode.uri)
-                  }
-                >
-                  Open in Spotify
-                </button>
+                <div class="col-lg-3">
+                  <button className="playBtn" onClick={() => this.togglePlay()}>
+                    {this.generatePlayButtonContent()}
+                  </button>
+                  <button
+                    className="openInSpotifyBtn"
+                    onClick={() =>
+                      (window.location.href = this.state.episode.uri)
+                    }
+                  >
+                    Open in Spotify
+                  </button>
+                </div>
+
+                <div className="col-lg-9">
+                  <div className="timeline">
+                    <ProgressBar className="progressBarContainer">
+                      {topics.map((topic) => {
+                        return (
+                          <ProgressBar
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="tooltip"
+                            className="topicTimelineSegment"
+                            now={this.calculateProcentage(
+                              topic.start,
+                              topic.stop
+                            )}
+                            onClick={() =>
+                              this.forwardAudioToTimeStamp(topic.start)
+                            }
+                          />
+                        );
+                      })}
+                    </ProgressBar>
+                    <div className="timeline-progress"></div>
+                  </div>
+                </div>
               </div>
 
               <div className="episodeDescriptionContainer">

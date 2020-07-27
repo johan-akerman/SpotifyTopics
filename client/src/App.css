@@ -22,13 +22,6 @@ body {
   padding-top: 15vh;
 }
 
-.episodeDescriptionContainer {
-  padding-top: 32px !important;
-  text-align: left;
-  overflow-x: hidden;
-  padding-bottom: 32px;
-}
-
 .backBtn {
   color: white;
   height: 25px;
@@ -97,10 +90,10 @@ body {
   line-height: 28px;
 }
 
-.episodePlayer {
-  padding-top: 16px;
+.episodePlayerContainer {
+  padding-top: 32px;
+  padding-bottom: 32px;
   margin: 0;
-  height: 50px;
 }
 ::-webkit-scrollbar {
   display: none;
@@ -378,29 +371,81 @@ select:focus {
   text-decoration: none !important;
 }
 
-.playBtn {
-  background-color: #1db954;
+.episodePlayerContainer button {
   border-radius: 10px;
   border-color: transparent;
-  font-size: 18px;
-  color: white;
   height: 60px;
+  font-size: 18px;
   line-height: 21px;
-  width: 200px;
+  width: 100%;
   font-weight: 500;
   letter-spacing: 0.21px;
-  margin-right: 12px;
+  margin-bottom: 16px;
+  color: white;
+}
+
+.episodePlayerContainer button:active {
+  border: none !important;
+}
+
+.playBtnText {
+  padding-left: 8px !important;
+}
+
+.playBtn {
+  background-color: #1db954;
 }
 
 .openInSpotifyBtn {
   background-color: rgb(37, 37, 39);
-  border-radius: 10px;
-  border-color: transparent;
-  font-size: 18px;
-  color: #1db954;
-  height: 60px;
-  line-height: 21px;
-  width: 200px;
-  font-weight: 500;
-  letter-spacing: 0.21px;
+}
+
+.episodeDescriptionContainer {
+  padding-top: 32px !important;
+  text-align: left;
+  overflow-x: hidden;
+  padding-bottom: 32px;
+}
+
+.timeline {
+  position: absolute;
+
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.progressBarContainer {
+  background-color: rgb(37, 37, 39) !important;
+}
+
+.topicTimelineSegment {
+  background-color: transparent !important;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  padding-left: 4px;
+  cursor: pointer;
+
+  z-index: 10;
+}
+
+.timeline-progress {
+  height: 16px;
+  background-color: #1db954;
+  width: 0%;
+  transition: width 0.1s ease;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.topicTimelineSegment:first-child {
+  border-left: none;
+}
+
+.topicTimelineSegment:last-child {
+  border-right: none;
 }
