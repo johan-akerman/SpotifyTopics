@@ -1,21 +1,20 @@
 import React, { Component } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import ProgressBar from "react-bootstrap/ProgressBar";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
+import ReactTooltip from "react-tooltip";
 
 import "../App.css";
 import Spotify from "spotify-web-api-js";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { faPlayCircle } from "@fortawesome/free-regular-svg-icons";
 import { faPauseCircle } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const spotifyWebApi = new Spotify();
 
 const topics = [
-  { title: "Intro", start: 0, stop: 7, key: 1 },
-  { title: "Middle", start: 7, stop: 16, key: 2 },
-  { title: "End", start: 16, stop: 30, key: 3 },
+  { title: "Topic #1", start: 0, stop: 7, key: 1 },
+  { title: "Topic #2", start: 7, stop: 16, key: 2 },
+  { title: "Topic #3", start: 16, stop: 30, key: 3 },
 ];
 
 class Episode extends Component {
@@ -84,7 +83,7 @@ class Episode extends Component {
       audio.play();
       let that = this;
 
-      setInterval(function () {
+      setInterval(() => {
         let currentTime = audio.currentTime;
         let duration = 30; //all audio-clips are previews of 30s from the podcast.
         let percent = (currentTime / duration) * 100 + "%";
@@ -106,9 +105,35 @@ class Episode extends Component {
     this.updateTime(time);
   }
 
+  generateTimeStampNumbers(start, stop) {
+    let startValue;
+    let stopValue;
+    if (start < 10) {
+      startValue = `0:0${start}`;
+    }
+    if (start > 9) {
+      startValue = `0:${start}`;
+    }
+    if (stop < 10) {
+      stopValue = `0:0${stop}`;
+    }
+    if (stop > 9) {
+      stopValue = `0:${stop}`;
+    }
+
+    return `${startValue} - ${stopValue} `;
+  }
+
+  checkTopicListClass(start, stop) {
+    if (
+      this.state.currentTime < stop - 0.5 &&
+      this.state.currentTime > start - 0.5
+    ) {
+      return "activeTopicList";
+    }
+  }
+
   render() {
-    var player = document.getElementById("Player");
-    console.log(topics);
     if (!this.state.show.images) {
       return <span></span>;
     }
@@ -123,7 +148,7 @@ class Episode extends Component {
               </Link>
 
               <div className="row episodeHeaderRow">
-                <div class="col-lg-3">
+                <div className="col-lg-3">
                   <img
                     className="episode-thumbnail"
                     src={this.state.episode.images[0].url}
@@ -148,7 +173,7 @@ class Episode extends Component {
                   ></source>
                 </audio>
 
-                <div class="col-lg-3">
+                <div className="col-lg-3">
                   <button className="playBtn" onClick={() => this.togglePlay()}>
                     {this.generatePlayButtonContent()}
                   </button>
@@ -168,9 +193,8 @@ class Episode extends Component {
                       {topics.map((topic) => {
                         return (
                           <ProgressBar
-                            data-toggle="tooltip"
-                            data-placement="top"
-                            title="tooltip"
+                            data-tip
+                            data-for={topic.title}
                             className="topicTimelineSegment"
                             now={this.calculateProcentage(
                               topic.start,
@@ -182,7 +206,27 @@ class Episode extends Component {
                           />
                         );
                       })}
+
+                      {topics.map((topic) => {
+                        return (
+                          <ReactTooltip
+                            id={topic.title}
+                            place="bottom"
+                            type="light"
+                            effect="solid"
+                          >
+                            <h1>{topic.title}</h1>
+                            <p>
+                              {this.generateTimeStampNumbers(
+                                topic.start,
+                                topic.stop
+                              )}
+                            </p>
+                          </ReactTooltip>
+                        );
+                      })}
                     </ProgressBar>
+
                     <div className="timeline-progress"></div>
                   </div>
                 </div>
@@ -203,27 +247,22 @@ class Episode extends Component {
                 Episode topics
               </ListGroup.Item>
 
-              <ListGroup.Item onClick={() => this.forwardAudioToTimeStamp(0)}>
-                <span className="listGroupItemTitle">
-                  Introduction to marketing
-                </span>
-                <span className="listGroupItemTime">0:00 - 0:13</span>
-              </ListGroup.Item>
-
-              <ListGroup.Item
-                className="activeListGroup"
-                onClick={() => this.forwardAudioToTimeStamp(13)}
-              >
-                <span className="listGroupItemTitle">
-                  Traditional marketing
-                </span>
-                <span className="listGroupItemTime">0:13 - 0:20</span>
-              </ListGroup.Item>
-
-              <ListGroup.Item onClick={() => this.forwardAudioToTimeStamp(20)}>
-                <span className="listGroupItemTitle">Email marketing</span>
-                <span className="listGroupItemTime">0:20 - 0:30</span>
-              </ListGroup.Item>
+              {topics.map((topic) => {
+                return (
+                  <ListGroup.Item
+                    onClick={() => this.forwardAudioToTimeStamp(topic.start)}
+                    className={this.checkTopicListClass(
+                      topic.start,
+                      topic.stop
+                    )}
+                  >
+                    <span className="listGroupItemTitle">{topic.title}</span>
+                    <span className="listGroupItemTime">
+                      {this.generateTimeStampNumbers(topic.start, topic.stop)}
+                    </span>
+                  </ListGroup.Item>
+                );
+              })}
             </ListGroup>
           </div>
         </div>

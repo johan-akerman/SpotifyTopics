@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect, useCallback } from "react";
+import React, { Component } from "react";
 import "../App.css";
 import { Link } from "react-router-dom";
 import Spotify from "spotify-web-api-js";
@@ -38,7 +38,6 @@ class Discover extends Component {
         <br />
 
         <h2>Recommended episodes</h2>
-        {console.log(this.state.episodes)}
 
         <div className="row">
           {this.state.episodes &&
@@ -63,13 +62,13 @@ class Discover extends Component {
 
         <br />
 
-        <h2>Trending topics</h2>
+        {/* <h2>Trending topics</h2>
         <a>
           <span className="badge  badge-secondary badgeTopic">
             <h1>Spotify's framtid</h1>
             <p>Daniel Ek</p>
           </span>
-        </a>
+        </a> */}
       </div>
     );
   }

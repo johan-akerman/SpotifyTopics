@@ -32,6 +32,7 @@ class Header extends Component {
               <div>{this.props.user.display_name}</div>
               <img
                 className="profilePicture"
+                alt="userProfilePicture"
                 src={this.props.user.images[0].url}
               />
 

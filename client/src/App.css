@@ -115,6 +115,10 @@ body {
   overflow-x: hidden;
 }
 
+.activeTopicList {
+  color: #1db954 !important;
+}
+
 .list-group-item {
   text-align: left !important;
   background-color: transparent !important;
