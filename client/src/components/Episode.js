@@ -39,6 +39,19 @@ class Episode extends Component {
         show: response.show,
       });
     });
+
+    this.inter = setInterval(() => {
+      let audio = document.getElementById("Player");
+      let currentTime = audio.currentTime;
+      let duration = 30; //all audio-clips are previews of 30s from the podcast.
+      let percent = (currentTime / duration) * 100 + "%";
+      this.updateTimeline(percent);
+      this.updateTime(currentTime);
+    }, 100);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.inter);
   }
 
   generatePlayButtonContent() {
@@ -72,7 +85,6 @@ class Episode extends Component {
     progress.style["width"] = percent;
   }
 
-  //second version
   togglePlay() {
     let status = this.state.playing;
     let audio = document.getElementById("Player");
@@ -81,15 +93,6 @@ class Episode extends Component {
     if (!status) {
       status = true;
       audio.play();
-      let that = this;
-
-      setInterval(() => {
-        let currentTime = audio.currentTime;
-        let duration = 30; //all audio-clips are previews of 30s from the podcast.
-        let percent = (currentTime / duration) * 100 + "%";
-        that.updateTimeline(percent);
-        that.updateTime(currentTime);
-      }, 100);
     } else if (status) {
       audio.pause();
       status = false;
@@ -215,8 +218,8 @@ class Episode extends Component {
                             type="light"
                             effect="solid"
                           >
-                            <h1>{topic.title}</h1>
-                            <p>
+                            <h1 className="tooltipTitle">{topic.title}</h1>
+                            <p className="tooltipDescription">
                               {this.generateTimeStampNumbers(
                                 topic.start,
                                 topic.stop

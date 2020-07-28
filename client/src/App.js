@@ -58,28 +58,35 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
-        <div>
-          <Header user={this.state.user} />
-          {this.checkAuth()}
-          <Switch>
-            <Route
-              auth={this.state.loggedIn}
-              path="/login"
-              exact
-              component={LandingPage}
-            />
+      <React.Fragment>
+        <Router>
+          <div className="mainAppContainer">
+            <Header user={this.state.user} />
+            {this.checkAuth()}
+            <Switch>
+              <Route
+                auth={this.state.loggedIn}
+                path="/login"
+                exact
+                component={LandingPage}
+              />
 
-            <Route
-              auth={this.state.loggedIn}
-              path="/discover"
-              exact
-              component={Discover}
-            />
-            <Route path="/discover/:id" exact component={Episode} />
-          </Switch>
+              <Route
+                auth={this.state.loggedIn}
+                path="/discover"
+                exact
+                component={Discover}
+              />
+              <Route path="/discover/:id" exact component={Episode} />
+            </Switch>
+          </div>
+        </Router>
+        <div className="secondAppContainer">
+          This app is currently only available on bigger screens. Please switch
+          to a device with bigger screen, for example a desktop or laptop.
+          Mobile version coming soon!
         </div>
-      </Router>
+      </React.Fragment>
     );
   }
 }
