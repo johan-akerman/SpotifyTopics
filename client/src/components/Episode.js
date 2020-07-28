@@ -10,12 +10,7 @@ import { faPlayCircle } from "@fortawesome/free-regular-svg-icons";
 import { faPauseCircle } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const spotifyWebApi = new Spotify();
-
-const topics = [
-  { title: "Topic #1", start: 0, stop: 7, key: 1 },
-  { title: "Topic #2", start: 7, stop: 16, key: 2 },
-  { title: "Topic #3", start: 16, stop: 30, key: 3 },
-];
+const topics = require("../topics.json");
 
 class Episode extends Component {
   constructor(props) {
@@ -25,7 +20,6 @@ class Episode extends Component {
       show: "",
       currentTime: 0,
       playing: false,
-      FontAwesomeIcon: "faPlayCircle",
     };
   }
 
@@ -56,16 +50,26 @@ class Episode extends Component {
 
   generatePlayButtonContent() {
     if (this.state.playing) {
-      return [
-        <FontAwesomeIcon icon={faPauseCircle} />,
-        <span className="playBtnText">Paus</span>,
-      ];
+      return [<FontAwesomeIcon icon={faPauseCircle} />];
     } else {
-      return [
-        <FontAwesomeIcon icon={faPlayCircle} />,
-        <span className="playBtnText">Play</span>,
-      ];
+      return [<FontAwesomeIcon icon={faPlayCircle} />];
     }
+  }
+
+  getThisEpisodesTopics() {
+    var temp = [];
+    topics.map((topic) => {
+      if (
+        topic.episodeId ===
+        window.location.href.substring(
+          window.location.href.lastIndexOf("/") + 1
+        )
+      ) {
+        temp.push(topic);
+      }
+    });
+    console.log(temp);
+    return temp;
   }
 
   calculateProcentage(start, stop) {
@@ -176,24 +180,10 @@ class Episode extends Component {
                   ></source>
                 </audio>
 
-                <div className="col-lg-3">
-                  <button className="playBtn" onClick={() => this.togglePlay()}>
-                    {this.generatePlayButtonContent()}
-                  </button>
-                  <button
-                    className="openInSpotifyBtn"
-                    onClick={() =>
-                      (window.location.href = this.state.episode.uri)
-                    }
-                  >
-                    Open in Spotify
-                  </button>
-                </div>
-
-                <div className="col-lg-9">
+                <div className="col-lg-12">
                   <div className="timeline">
                     <ProgressBar className="progressBarContainer">
-                      {topics.map((topic) => {
+                      {this.getThisEpisodesTopics().map((topic) => {
                         return (
                           <ProgressBar
                             data-tip
@@ -210,7 +200,7 @@ class Episode extends Component {
                         );
                       })}
 
-                      {topics.map((topic) => {
+                      {this.getThisEpisodesTopics().map((topic) => {
                         return (
                           <ReactTooltip
                             id={topic.title}
@@ -232,6 +222,11 @@ class Episode extends Component {
 
                     <div className="timeline-progress"></div>
                   </div>
+                  <div className="playerControls">
+                    <a className="playBtn" onClick={() => this.togglePlay()}>
+                      {this.generatePlayButtonContent()}
+                    </a>
+                  </div>
                 </div>
               </div>
 
@@ -250,7 +245,7 @@ class Episode extends Component {
                 Episode topics
               </ListGroup.Item>
 
-              {topics.map((topic) => {
+              {this.getThisEpisodesTopics().map((topic) => {
                 return (
                   <ListGroup.Item
                     onClick={() => this.forwardAudioToTimeStamp(topic.start)}

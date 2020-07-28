@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../App.css";
 import Navbar from "react-bootstrap/Navbar";
+import Dropdown from "react-bootstrap/Dropdown";
 import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
 import Logo from "../Spotify_Logo.png";
@@ -29,14 +30,22 @@ class Header extends Component {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto"></Nav>
             <Form inline>
-              <div>{this.props.user.display_name}</div>
-              <img
-                className="profilePicture"
-                alt="userProfilePicture"
-                src={this.props.user.images[0].url}
-              />
+              <Dropdown id="dropDownBtn">
+                <Dropdown.Toggle id="headerDropdown">
+                  <img
+                    className="profilePicture"
+                    alt="userProfilePicture"
+                    src={this.props.user.images[0].url}
+                  />
+                  <span className="profileName">
+                    {this.props.user.display_name}
+                  </span>
+                </Dropdown.Toggle>
 
-              <button>Log out</button>
+                <Dropdown.Menu>
+                  <a href="/">Log out</a>
+                </Dropdown.Menu>
+              </Dropdown>
             </Form>
           </Navbar.Collapse>
         </Navbar>

@@ -12,9 +12,34 @@
   }
 }
 
-.header {
-  text-align: center;
+#headerDropdown {
+  display: inline-flexbox;
+  background-color: transparent;
+  border: none !important;
 }
+
+.profilePicture {
+  width: 40px;
+  height: 40px;
+  margin: 12px;
+  border-radius: 100%;
+}
+
+.profileName {
+  padding-right: 8px;
+}
+
+.dropdown-menu {
+  background-color: #272727 !important;
+  width: 100% !important;
+  padding: 8px 0 8px 16px !important;
+}
+
+.dropdown-menu a {
+  text-decoration: none !important;
+  color: white !important;
+}
+
 body {
   background-color: #0f0f0f !important;
   color: white !important;
@@ -26,6 +51,7 @@ body {
 
   padding-top: 16px !important;
   padding-bottom: 16px !important;
+  padding-right: 10% !important;
   height: 10vh;
 }
 
@@ -209,12 +235,6 @@ audio {
 .listGroupItemHeader:hover {
   background-color: transparent !important;
   cursor: auto;
-}
-
-.profilePicture {
-  width: 50px;
-  height: 50px;
-  border-radius: 100%;
 }
 
 .episodeDescriptionTitle {
@@ -431,12 +451,14 @@ select:focus {
   border: none !important;
 }
 
-.playBtnText {
-  padding-left: 8px !important;
-}
-
 .playBtn {
-  background-color: #1db954;
+  background-color: transparent;
+  width: 35px !important;
+  font-size: 32px !important;
+  height: 40px !important;
+  padding: 0 !important;
+  text-align: center !important;
+  cursor: pointer;
 }
 
 .openInSpotifyBtn {
@@ -453,7 +475,6 @@ select:focus {
 .timeline {
   position: absolute;
 
-  bottom: 0;
   left: 0;
   width: 100%;
   border-radius: 5px;
@@ -491,4 +512,8 @@ select:focus {
 
 .topicTimelineSegment:last-child {
   border-right: none;
+}
+
+.playerControls {
+  margin-top: 32px;
 }

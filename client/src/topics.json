@@ -1,0 +1,243 @@
+[
+  {
+    "episodeId": "0QVuQXFPUitPeXH727JLgH",
+    "episodeName": "Niklas Adalberth",
+    "publisher": "Sommar & Vinter i P1",
+    "title": "Topic #1",
+    "isTrending": true,
+    "start": 0,
+    "stop": 7,
+    "key": 1
+  },
+  {
+    "episodeId": "0QVuQXFPUitPeXH727JLgH",
+    "episodeName": "Niklas Adalberth",
+    "publisher": "Sommar & Vinter i P1",
+    "title": "Topic #2",
+    "isTrending": false,
+    "start": 7,
+    "stop": 16,
+    "key": 1
+  },
+  {
+    "episodeId": "0QVuQXFPUitPeXH727JLgH",
+    "episodeName": "Niklas Adalberth",
+    "publisher": "Sommar & Vinter i P1",
+    "title": "Topic #3",
+    "isTrending": false,
+    "start": 16,
+    "stop": 30,
+    "key": 1
+  },
+  {
+    "episodeId": "2QG2XPrjKY6HYSjmxflMzP",
+    "episodeName": "435. Ett samtal med Daniel Ek om Spotify och livet - igår, idag och imorgon",
+    "publisher": "#ensakidag - en riktigt viktig sak varje morgon",
+    "title": "Topic #1",
+    "isTrending": true,
+    "start": 0,
+    "stop": 7,
+    "key": 1
+  },
+  {
+    "episodeId": "2QG2XPrjKY6HYSjmxflMzP",
+    "episodeName": "435. Ett samtal med Daniel Ek om Spotify och livet - igår, idag och imorgon",
+    "publisher": "#ensakidag - en riktigt viktig sak varje morgon",
+    "title": "Topic #2",
+    "isTrending": false,
+    "start": 7,
+    "stop": 16,
+    "key": 1
+  },
+  {
+    "episodeId": "2QG2XPrjKY6HYSjmxflMzP",
+    "episodeName": "435. Ett samtal med Daniel Ek om Spotify och livet - igår, idag och imorgon",
+    "publisher": "#ensakidag - en riktigt viktig sak varje morgon",
+    "title": "Topic #3",
+    "isTrending": false,
+    "start": 16,
+    "stop": 30,
+    "key": 1
+  },
+
+  {
+    "episodeId": "2R4VEgJfLXD2wKmL9c11l6",
+    "episodeName": "#122 Självkörande fordon - Linnéa Kornehed",
+    "publisher": "Under Femton",
+    "title": "Topic #1",
+    "isTrending": true,
+    "start": 0,
+    "stop": 7,
+    "key": 1
+  },
+  {
+    "episodeId": "2R4VEgJfLXD2wKmL9c11l6",
+    "episodeName": "#122 Självkörande fordon - Linnéa Kornehed",
+    "publisher": "Under Femton",
+    "title": "Topic #2",
+    "isTrending": false,
+    "start": 7,
+    "stop": 16,
+    "key": 1
+  },
+  {
+    "episodeId": "2R4VEgJfLXD2wKmL9c11l6",
+    "episodeName": "#122 Självkörande fordon - Linnéa Kornehed",
+    "publisher": "Under Femton",
+    "title": "Topic #3",
+    "isTrending": false,
+    "start": 16,
+    "stop": 30,
+    "key": 1
+  },
+  {
+    "episodeId": "7LWWaN9qyuSMEg2I0DLG6z",
+    "episodeName": "#14 - Peter Carlsson, vd på Northvolt. Från idé, kapitaljakt och tvivel till fabriksbygge och framtidstro.",
+    "publisher": "Allt du behöver veta om ny teknik",
+    "title": "Topic #1",
+    "isTrending": true,
+    "start": 0,
+    "stop": 7,
+    "key": 1
+  },
+  {
+    "episodeId": "7LWWaN9qyuSMEg2I0DLG6z",
+    "episodeName": "#14 - Peter Carlsson, vd på Northvolt. Från idé, kapitaljakt och tvivel till fabriksbygge och framtidstro.",
+    "publisher": "Allt du behöver veta om ny teknik",
+    "title": "Topic #2",
+    "isTrending": false,
+    "start": 7,
+    "stop": 16,
+    "key": 1
+  },
+  {
+    "episodeId": "7LWWaN9qyuSMEg2I0DLG6z",
+    "episodeName": "#14 - Peter Carlsson, vd på Northvolt. Från idé, kapitaljakt och tvivel till fabriksbygge och framtidstro.",
+    "publisher": "Allt du behöver veta om ny teknik",
+    "title": "Topic #3",
+    "isTrending": false,
+    "start": 16,
+    "stop": 30,
+    "key": 1
+  },
+  {
+    "episodeId": "3C3imZeq18TABmcswlHgzY",
+    "episodeName": "Ep 56: How to Think Like Elon Musk and Jeff Bezos",
+    "publisher": "The Tim Ferriss Show",
+    "title": "Topic #1",
+    "isTrending": true,
+    "start": 0,
+    "stop": 7,
+    "key": 1
+  },
+  {
+    "episodeId": "3C3imZeq18TABmcswlHgzY",
+    "episodeName": "Ep 56: How to Think Like Elon Musk and Jeff Bezos",
+    "publisher": "The Tim Ferriss Show",
+    "title": "Topic #2",
+    "isTrending": false,
+    "start": 7,
+    "stop": 16,
+    "key": 1
+  },
+  {
+    "episodeId": "3C3imZeq18TABmcswlHgzY",
+    "episodeName": "Ep 56: How to Think Like Elon Musk and Jeff Bezos",
+    "publisher": "The Tim Ferriss Show",
+    "title": "Topic #3",
+    "isTrending": false,
+    "start": 16,
+    "stop": 30,
+    "key": 1
+  },
+  {
+    "episodeId": "6oyFNKq3atN7U9splhDnuI",
+    "episodeName": "Summer Internships",
+    "publisher": "Spotify: The GreenRoom",
+    "title": "Topic #1",
+    "isTrending": true,
+    "start": 0,
+    "stop": 7,
+    "key": 1
+  },
+  {
+    "episodeId": "6oyFNKq3atN7U9splhDnuI",
+    "episodeName": "Summer Internships",
+    "publisher": "Spotify: The GreenRoom",
+    "title": "Topic #2",
+    "isTrending": false,
+    "start": 7,
+    "stop": 16,
+    "key": 1
+  },
+  {
+    "episodeId": "6oyFNKq3atN7U9splhDnuI",
+    "episodeName": "Summer Internships",
+    "publisher": "Spotify: The GreenRoom",
+    "title": "Topic #3",
+    "isTrending": false,
+    "start": 16,
+    "stop": 30,
+    "key": 1
+  },
+  {
+    "episodeId": "2K25jghHW8RNdDbUf2dLde",
+    "episodeName": "#1: Johnny Warström",
+    "publisher": "Mitt liv som ingenjör",
+    "title": "Topic #1",
+    "isTrending": true,
+    "start": 0,
+    "stop": 7,
+    "key": 1
+  },
+  {
+    "episodeId": "2K25jghHW8RNdDbUf2dLde",
+    "episodeName": "#1: Johnny Warström",
+    "publisher": "Mitt liv som ingenjör",
+    "title": "Topic #2",
+    "isTrending": false,
+    "start": 7,
+    "stop": 16,
+    "key": 1
+  },
+  {
+    "episodeId": "2K25jghHW8RNdDbUf2dLde",
+    "episodeName": "#1: Johnny Warström",
+    "publisher": "Mitt liv som ingenjör",
+    "title": "Topic #3",
+    "isTrending": false,
+    "start": 16,
+    "stop": 30,
+    "key": 1
+  },
+  {
+    "episodeId": "1D3H532YgQPn0HW9FJK0yq",
+    "episodeName": "#137 Ai & Utbildning - Joel Hellermark",
+    "publisher": "Under Femton",
+    "title": "Topic #1",
+    "isTrending": false,
+    "start": 0,
+    "stop": 7,
+    "key": 1
+  },
+  {
+    "episodeId": "1D3H532YgQPn0HW9FJK0yq",
+    "episodeName": "#137 Ai & Utbildning - Joel Hellermark",
+    "publisher": "Under Femton",
+    "title": "Topic #2",
+    "isTrending": false,
+    "start": 7,
+    "stop": 16,
+    "key": 1
+  },
+  {
+    "episodeId": "1D3H532YgQPn0HW9FJK0yq",
+    "episodeName": "#137 Ai & Utbildning - Joel Hellermark",
+    "publisher": "Under Femton",
+    "title": "Topic #3",
+    "isTrending": false,
+    "start": 16,
+    "stop": 30,
+    "key": 1
+  }
+]

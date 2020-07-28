@@ -3,56 +3,8 @@ import "../App.css";
 import { Link } from "react-router-dom";
 import Spotify from "spotify-web-api-js";
 
-const topics = [
-  { title: "Topic #1", start: 0, stop: 7, key: 1 },
-  { title: "Topic #2", start: 7, stop: 16, key: 2 },
-  { title: "Topic #3", start: 16, stop: 30, key: 3 },
-];
+const topics = require("../topics.json");
 
-const trendingTopics = [
-  {
-    title: "Topic #1",
-    publisher: "asdf",
-    url: "asdf",
-    start: 0,
-    stop: 7,
-    key: 1,
-  },
-  { title: "Topic #2", start: 7, stop: 16, key: 2 },
-  { title: "Topic #3", start: 16, stop: 30, key: 3 },
-];
-
-const EpisodeTopics = {
-  episodes: [
-    {
-      id: "0QVuQXFPUitPeXH727JLgH",
-      publicer: "Under Femton",
-      topics: [
-        { title: "Topic #1", start: 0, stop: 7, key: 1 },
-        { title: "Topic #2", start: 7, stop: 16, key: 2 },
-        { title: "Topic #3", start: 16, stop: 30, key: 3 },
-      ],
-    },
-    {
-      id: "0QVuQXFPUitPeXH727JLgH",
-      publicer: "Under Femton",
-      topics: [
-        { title: "Topic #1", start: 0, stop: 7, key: 1 },
-        { title: "Topic #2", start: 7, stop: 16, key: 2 },
-        { title: "Topic #3", start: 16, stop: 30, key: 3 },
-      ],
-    },
-    {
-      id: "0QVuQXFPUitPeXH727JLgH",
-      publicer: "Under Femton",
-      topics: [
-        { title: "Topic #1", start: 0, stop: 7, key: 1 },
-        { title: "Topic #2", start: 7, stop: 16, key: 2 },
-        { title: "Topic #3", start: 16, stop: 30, key: 3 },
-      ],
-    },
-  ],
-};
 const spotifyWebApi = new Spotify();
 
 class Discover extends Component {
@@ -71,13 +23,15 @@ class Discover extends Component {
         "3C3imZeq18TABmcswlHgzY",
         "6oyFNKq3atN7U9splhDnuI",
         "2K25jghHW8RNdDbUf2dLde",
-        "4OWSOjrnNGMp6hn4NYVqBl",
+        "1D3H532YgQPn0HW9FJK0yq",
       ])
       .then((response) => {
         this.setState({
           episodes: response.episodes,
         });
       });
+
+    console.log(this.state.episodes);
 
     spotifyWebApi.getMe().then((response) => {
       this.setState({
@@ -86,12 +40,23 @@ class Discover extends Component {
     });
   }
 
+  getTrendingTopics() {
+    var temp = [];
+    topics.map((topic) => {
+      if (topic.isTrending) {
+        temp.push(topic);
+      }
+    });
+
+    return temp;
+  }
+
   render() {
     return (
       <div className="episodesContainer">
         <h1>Welcome {this.state.user.display_name},</h1>
         <br />
-
+        {console.log(this.getTrendingTopics())}
         <div className="row">
           <div className="col-lg-8">
             <h2>Recommended episodes</h2>
@@ -103,7 +68,9 @@ class Discover extends Component {
                     <div className="col-lg-3" key={`episode - ${episode.id}`}>
                       <Link
                         className="podcastEpisodeCardLink"
-                        to={`/discover/${episode.id}`}
+                        to={{
+                          pathname: `/discover/${episode.id}`,
+                        }}
                       >
                         <div className="podcastEpisodeCard">
                           <img
@@ -123,58 +90,24 @@ class Discover extends Component {
 
           <div className="col-lg-4">
             <h2>Trending topics</h2>
-            <a>
-              <span className="badge  badge-secondary badgeTopic">
-                <h1>Spotify's framtid</h1>
-                <p>#ensakidag - en riktigt viktig sak varje morgon</p>
-              </span>
-            </a>
 
-            <a>
-              <span className="badge  badge-secondary badgeTopic">
-                <h1>Framtidens självkörande lastbilar</h1>
-                <p>Under Femton</p>
-              </span>
-            </a>
-
-            <a>
-              <span className="badge  badge-secondary badgeTopic">
-                <h1>Europas största batteri fabrik</h1>
-                <p>Allt du behöver veta om ny teknik</p>
-              </span>
-            </a>
-
-            <a>
-              <span className="badge  badge-secondary badgeTopic">
-                <h1>How to get an internship at Spotify</h1>
-                <p>The Greenroom</p>
-              </span>
-            </a>
-
-            <a>
-              <span className="badge  badge-secondary badgeTopic">
-                <h1>How to think big</h1>
-                <p>The Tim Ferris Show</p>
-              </span>
-            </a>
-
-            <a>
-              <span className="badge  badge-secondary badgeTopic">
-                <h1>Livet på KTH</h1>
-                <p>Mitt liv som ingenjör</p>
-              </span>
-            </a>
-
-            <a>
-              <span className="badge  badge-secondary badgeTopic">
-                <h1>Hur man bygger ett imperium</h1>
-                <p>Framgångspodden</p>
-              </span>
-            </a>
+            {this.getTrendingTopics().map((topic) => {
+              return (
+                <Link
+                  className="podcastEpisodeCardLink"
+                  to={{
+                    pathname: `/discover/${topic.episodeId}`,
+                  }}
+                >
+                  <span className="badge badge-secondary badgeTopic">
+                    <h1>{topic.title}</h1>
+                    <p>{topic.publisher}</p>
+                  </span>
+                </Link>
+              );
+            })}
           </div>
         </div>
-
-        <br />
       </div>
     );
   }
