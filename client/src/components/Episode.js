@@ -27,6 +27,7 @@ class Episode extends Component {
     var episodeId = window.location.href.substring(
       window.location.href.lastIndexOf("/") + 1
     );
+
     spotifyWebApi.getEpisode(episodeId).then((response) => {
       this.setState({
         episode: response,
@@ -68,7 +69,7 @@ class Episode extends Component {
         temp.push(topic);
       }
     });
-    console.log(temp);
+
     return temp;
   }
 

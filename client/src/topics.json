@@ -125,7 +125,7 @@
     "episodeName": "Ep 56: How to Think Like Elon Musk and Jeff Bezos",
     "publisher": "The Tim Ferriss Show",
     "title": "Topic #1",
-    "isTrending": true,
+    "isTrending": false,
     "start": 0,
     "stop": 7,
     "key": 1
@@ -135,7 +135,7 @@
     "episodeName": "Ep 56: How to Think Like Elon Musk and Jeff Bezos",
     "publisher": "The Tim Ferriss Show",
     "title": "Topic #2",
-    "isTrending": false,
+    "isTrending": true,
     "start": 7,
     "stop": 16,
     "key": 1

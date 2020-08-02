@@ -31,8 +31,6 @@ class Discover extends Component {
         });
       });
 
-    console.log(this.state.episodes);
-
     spotifyWebApi.getMe().then((response) => {
       this.setState({
         user: response,
@@ -56,7 +54,7 @@ class Discover extends Component {
       <div className="episodesContainer">
         <h1>Welcome {this.state.user.display_name},</h1>
         <br />
-        {console.log(this.getTrendingTopics())}
+
         <div className="row">
           <div className="col-lg-8">
             <h2>Recommended episodes</h2>
@@ -97,6 +95,9 @@ class Discover extends Component {
                   className="podcastEpisodeCardLink"
                   to={{
                     pathname: `/discover/${topic.episodeId}`,
+                    state: {
+                      time: topic.start,
+                    },
                   }}
                 >
                   <span className="badge badge-secondary badgeTopic">

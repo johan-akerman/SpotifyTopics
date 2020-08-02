@@ -40,6 +40,10 @@
   color: white !important;
 }
 
+.dropdown-menu a:hover {
+  opacity: 0.5;
+}
+
 body {
   background-color: #0f0f0f !important;
   color: white !important;
@@ -99,6 +103,28 @@ body {
   position: absolute !important;
   bottom: 0;
 }
+
+.LandingPageContainer {
+  margin: 30vh auto;
+  max-width: 750px;
+  text-align: center !important;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 16px;
+}
+
+.footer a {
+  color: #1db954;
+}
+
+.footer a:hover {
+  color: #1db954;
+}
+
 .episodeType {
   text-align: left;
   color: #fff;
@@ -110,8 +136,14 @@ body {
   vertical-align: baseline;
 }
 
+a.episodeType:hover {
+  color: #fff;
+}
+.spotifyBtn {
+  background-color: #1;
+}
+
 .episodeTitle {
-  text-align: left;
   color: #fff;
   font-size: 48px;
   font-weight: 900;
@@ -151,8 +183,7 @@ body {
 }
 
 .episodePlayerContainer {
-  padding-top: 32px;
-  padding-bottom: 32px;
+  padding: 32px 15px;
   margin: 0;
 }
 ::-webkit-scrollbar {
@@ -258,13 +289,6 @@ audio {
 
 .profileNav {
   float: right !important;
-}
-.myFooter {
-  height: 100px;
-  background-color: #282828;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
 }
 
 .myTable > thead {
@@ -462,7 +486,23 @@ select:focus {
 }
 
 .openInSpotifyBtn {
-  background-color: rgb(37, 37, 39);
+  background-color: #1db954;
+  min-width: 160px;
+  font-size: 14px;
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 25px;
+  padding: 16px 48px 18px 48px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.openInSpotifyBtn:hover {
+  text-decoration: none !important;
+  color: white;
+
+  background-color: #1ed760;
 }
 
 .episodeDescriptionContainer {
