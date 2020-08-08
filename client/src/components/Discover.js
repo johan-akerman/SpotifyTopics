@@ -95,8 +95,8 @@ class Discover extends Component {
                   className="podcastEpisodeCardLink"
                   to={{
                     pathname: `/discover/${topic.episodeId}`,
-                    state: {
-                      time: topic.start,
+                    myProps: {
+                      startTime: topic.start,
                     },
                   }}
                 >

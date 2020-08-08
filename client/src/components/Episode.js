@@ -5,7 +5,7 @@ import ReactTooltip from "react-tooltip";
 
 import "../App.css";
 import Spotify from "spotify-web-api-js";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { faPlayCircle } from "@fortawesome/free-regular-svg-icons";
 import { faPauseCircle } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -37,11 +37,13 @@ class Episode extends Component {
 
     this.inter = setInterval(() => {
       let audio = document.getElementById("Player");
-      let currentTime = audio.currentTime;
-      let duration = 30; //all audio-clips are previews of 30s from the podcast.
-      let percent = (currentTime / duration) * 100 + "%";
+      let myCurrentTime = audio.currentTime;
+
+      let percent = (audio.currentTime / 30) * 100 + "%";
       this.updateTimeline(percent);
-      this.updateTime(currentTime);
+      this.setState({
+        currentTime: myCurrentTime,
+      });
     }, 100);
   }
 
@@ -78,16 +80,20 @@ class Episode extends Component {
     return ((stop - start) / duration) * 100;
   }
 
-  updateTime(timestamp) {
-    timestamp = Math.floor(timestamp);
-    this.setState({
-      currentTime: timestamp,
-    });
-  }
-
   updateTimeline(percent) {
     let progress = document.querySelector(".timeline-progress");
     progress.style["width"] = percent;
+  }
+
+  updateTime(timestamp) {
+    var player = document.getElementById("Player");
+    player.currentTime = timestamp;
+    timestamp = Math.floor(timestamp);
+    let percent = (player.currentTime / 30) * 100 + "%";
+    this.updateTimeline(percent);
+    this.setState({
+      currentTime: timestamp,
+    });
   }
 
   togglePlay() {
@@ -103,14 +109,6 @@ class Episode extends Component {
       status = false;
     }
     this.setState({ playing: status });
-  }
-
-  forwardAudioToTimeStamp(time) {
-    var player = document.getElementById("Player");
-    player.currentTime = time;
-    let percent = (player.currentTime / 30) * 100 + "%";
-    this.updateTimeline(percent);
-    this.updateTime(time);
   }
 
   generateTimeStampNumbers(start, stop) {
@@ -142,7 +140,7 @@ class Episode extends Component {
   }
 
   render() {
-    if (!this.state.show.images) {
+    if (!this.state.episode) {
       return <span></span>;
     }
 
@@ -194,9 +192,7 @@ class Episode extends Component {
                               topic.start,
                               topic.stop
                             )}
-                            onClick={() =>
-                              this.forwardAudioToTimeStamp(topic.start)
-                            }
+                            onClick={() => this.updateTime(topic.start)}
                           />
                         );
                       })}
@@ -249,7 +245,7 @@ class Episode extends Component {
               {this.getThisEpisodesTopics().map((topic) => {
                 return (
                   <ListGroup.Item
-                    onClick={() => this.forwardAudioToTimeStamp(topic.start)}
+                    onClick={() => this.updateTime(topic.start)}
                     className={this.checkTopicListClass(
                       topic.start,
                       topic.stop

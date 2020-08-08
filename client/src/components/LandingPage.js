@@ -23,8 +23,8 @@ class LandingPage extends Component {
               goal of this tool is to help you navigate through the content of
               an episode while making it easier to find interesting podcast
               based on what topics are being discussed. Sadly, the Spotify API
-              does only provide a 30 seconds preview of each podcast episode. So
-              this is just a demo.
+              only provide a 30 seconds preview of each podcast episode. So this
+              is just a demo.
             </p>
             <br />
             <a href="http://localhost:8888/login" className="openInSpotifyBtn">
