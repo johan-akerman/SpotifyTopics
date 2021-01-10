@@ -4,5 +4,11 @@ My contribution to the "Spotify Ramp Up Summer 2020" challenge. During the summe
 ## Screenshots
 <img src="/discover.png" alt="discover"
 	title="Desktop preview" width="600" /> 
+	<br />
+Dicovery page that greets the user after they have logged in with their Spotify credentials. The page displays recommended podcasts and trending topics.
+	<br />
+		<br />
 <img src="/episode.png" alt="episode"
 	title="Mobile preview" width="600" />
+		<br />
+Seperate page for a specific podcast episode. A "timestamp divided podcast player" and episode description on the left. A "table of content" of topics discussed in the episode on the right.
