@@ -1,11 +1,14 @@
 # Spotify Topics
-My contribution to the "Spotify Ramp Up Summer 2020" challenge. During the summer I developed a timestamp based navigation system for podcasts. More specifically, the tool allows the user to easily get an overview of the content of a podcast. The tool also provides a convenient way to fastforward to specific timestamps where certain topics are being discussed. This is done either by clicking on the progressbar in the player or on the desired topic in the sidebar (see screenshots below).  The tool was mainly build with React JS, the Spotify Web API and Bootstrap. 
+Participated in Spotify's summer hackathon in 2020. The challenge was to develop something with their API. As I have recently become a big fan of podcasts (especially informative ones), I chose to develop a new way to consume podcasts. My idea was to introduce "topics" discussed in each episode so that the user could easily get an overview of what topics are being discussed in each episode. Introducing topics could also enable a more advanced and accurate recommendation algorithm that could not only recommend interesting podcast episodes, but also topics that you may find interesting. The tool also provides a convenient way to fastforward to specific timestamps where certain topics are being discussed. This is done either by clicking on the new customized progressbar in the player or on the desired topic in the sidebar (see screenshots below). 
+
+## Technologies used
+React JS, the Spotify Web API and Bootstrap. 
 
 ## Screenshots
 <img src="/discover.png" alt="discover"
 	title="Desktop preview" width="600" /> 
 	<br />
-Dicovery page that greets the user after they have logged in with their Spotify credentials. The page displays recommended podcasts and trending topics.
+Dicovery page that greets the user after they have logged in with their Spotify credentials.
 	<br />
 		<br />
 <img src="/episode.png" alt="episode"
