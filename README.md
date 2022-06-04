@@ -20,4 +20,4 @@ React JS, the Spotify Web API and Bootstrap.
 		
 
 ## ⚠️ PS
-This was one of the first projects working with git. As a result I made some mistakes and therefore some of the source code is missing. Lesson learned... :)
+This was one of my first projects working with git. As a result, I made some mistakes and therefore some of the source code is missing. Lesson learned... :)
