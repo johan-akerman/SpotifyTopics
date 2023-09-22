@@ -15,6 +15,3 @@ React JS, the Spotify Web API and Bootstrap.
 <img src="/episode.png" alt="episode"
 	title="Episode preview" width="800" />
 		
-
-## ⚠️ PS
-This was one of my first projects working with git. As a result, I made some mistakes and therefore some of the source code is missing. Lesson learned... :)
